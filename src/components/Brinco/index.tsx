@@ -2,7 +2,7 @@ import * as React from "react";
 import { SVGProps } from "react";
 
 const Brinco = (props: SVGProps<SVGSVGElement>) => (
-  <div className="relative" style={{ width: 292 }}>
+  <div className="relative " style={{ width: 292 }}>
     <svg
       width={292}
       height={282}
@@ -23,9 +23,8 @@ const Brinco = (props: SVGProps<SVGSVGElement>) => (
       /> */}
     </svg>
     <input
-      type="text"
-      value="001"
-      className="absolute text-stone-900 focus:outline-none bottom-10 left-0 right-0 bg-transparent font-bold text-8xl tracking-wider text-center"
+      maxLength={4}
+      className="absolute uppercase text-stone-900 focus:outline-none bottom-10 left-0 right-0 bg-transparent font-bold text-7xl tracking-wider text-center"
     />
   </div>
 );
