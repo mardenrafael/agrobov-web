@@ -11,7 +11,7 @@ const Card: React.FC<Props> = ({ titulo, femeasQtd, machosQtd }) => {
 
   return (
     <div className="border rounded-md  overflow-hidden">
-      <div className="bg-teal-600 p-1">
+      <div className="bg-primary p-1">
         <h2 className="text-center font-light text-xl text-teal-50 ">
           {titulo}
         </h2>

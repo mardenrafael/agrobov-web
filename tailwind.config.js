@@ -9,6 +9,14 @@ module.exports = {
     fontFamily: {
       sans: "Inter, sans-serif",
     },
+    extend: {
+      colors: {
+        primary: "#276852",
+        secundaria: "#000E23",
+        tercearia: "#EFFFFF",
+        yellou: "#EBDF00",
+      },
+    },
   },
   plugins: [],
 };
