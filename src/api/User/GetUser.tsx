@@ -44,6 +44,14 @@ export default function User(props: PropsWithChildren) {
         return formated_date
     }
 
+    function formatGenre(genre: string) {
+        
+        if(genre == "Male") {
+            return "Macho"
+        } else {
+            return "Fêmea"
+        }
+    }
 
     return(
         <div>
@@ -59,7 +67,7 @@ export default function User(props: PropsWithChildren) {
                         <li key={Ox.earring}>
                             Brinco: {Ox.earring}
                             <br />
-                            Genero: {Ox.genre}
+                            Genero: {formatGenre(Ox.genre)}
                             <br />
                             Data de Nascimento: {formatDate(Ox.born_date)}
                         </li>
