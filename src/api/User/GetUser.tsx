@@ -1,49 +1,58 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import axios  from "axios";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { Ox } from "../Types/Ox";
 import BASE_URL from "../utils/BaseUrl";
 import TOKEN from "../utils/Token";
 
-const User = () => {
-    const [user, setUser] = useState<any>({})
-    const getUser = async (userId: string) => {
-       await axios.get(`${BASE_URL}user/${userId}`, {
-        headers: {
-            "Authorization": TOKEN
-        }
-        }).then((response) => setUser(response.data.result));
-    }
-    
-    useEffect(() => {
-        getUser("1")
-        console.log(user.Ox);
-        
-    }, []);
 
-    const oxList = user.Ox;
+type TUserResponse = {
+    name: string;
+    brand: string;
+    Ox: Ox[]
+}
+
+export default function User(props: PropsWithChildren) {
+    
+    const [data, setData] = useState<TUserResponse>()
+    const [isLoading, setLoading] = useState(true)
+
+
+    useEffect(() => {
+        fetch(BASE_URL, {
+            headers: {
+                Authorization: TOKEN,
+            }
+        })
+        .then((res) => {            
+            return res.json()
+        })
+        .then((data) => {
+            console.log(data);
+            
+
+            setData(data.result)
+            setLoading(false)
+        })
+    }, [])
+
+    if (isLoading) return <p> Loading...</p>
+
 
     return(
-       <> 
-        <div className="flex flex-col p-4 gap-8">
-            <h2>User List</h2>
-           <p>Produtor: {user.name}</p>
-            <h3>Lista de Bois</h3>
+        <div>
+            <p>Nome: {data?.name}</p>
+            <p>Marca: {data?.brand}</p>
+
             <ul>
-               {console.log(oxList)}
-               { oxList && oxList.map((ox: Ox, index: number) => {
-                    <div key={index}>
-                        <li>
-                            brinco: {ox.earring};
+                {data?.Ox.map(Ox => {
+                    return (
+                        <li key={Ox.earring}>
+                            Brinco: {Ox.earring}
+                            Genero: {Ox.genre}
                         </li>
-                        <li>
-                            sexo: {ox.genre};
-                        </li>
-                    </div>
-                })}  
+                    )
+                })}
             </ul>
         </div>
-       </>
     )
 }
-export default User
