@@ -8,6 +8,7 @@ import TOKEN from "../utils/Token";
 type TUserResponse = {
     name: string;
     brand: string;
+    email: string;
     Ox: Ox[]
 }
 
@@ -37,18 +38,30 @@ export default function User(props: PropsWithChildren) {
 
     if (isLoading) return <p> Loading...</p>
 
+    function formatDate(date: Date) {
+        const born_date = new Date(date)
+        const formated_date = born_date.toLocaleDateString()
+        return formated_date
+    }
+
 
     return(
         <div>
             <p>Nome: {data?.name}</p>
             <p>Marca: {data?.brand}</p>
+            <p>E-mail: {data?.email}</p>
 
+            <h2>Lista de Bois</h2>
             <ul>
                 {data?.Ox.map(Ox => {
+                    
                     return (
                         <li key={Ox.earring}>
                             Brinco: {Ox.earring}
+                            <br />
                             Genero: {Ox.genre}
+                            <br />
+                            Data de Nascimento: {formatDate(Ox.born_date)}
                         </li>
                     )
                 })}
