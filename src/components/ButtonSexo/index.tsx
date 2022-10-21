@@ -10,9 +10,12 @@ const ButtonSexo: React.FC<ButtonSexoProps> = ({ sexo, check, ...rest }) => {
   return (
     <>
       <button
-        className={clsx("text-center bg-primary py-6 px-8 rounded-md", {
-          "bg-yellou": check,
-        })}
+        className={clsx(
+          "text-center  bg-primary py-6 px-8 rounded-md border-transparent",
+          {
+            "bg-hover-primary border-2 border-secundaria": check,
+          }
+        )}
         {...rest}
       >
         <h3 className="text-6xl font-bold text-tercearia ">{sexo}</h3>

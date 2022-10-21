@@ -15,6 +15,7 @@ module.exports = {
         secundaria: "#000E23",
         tercearia: "#EFFFFF",
         yellou: "#EBDF00",
+        "hover-primary": "#043726",
       },
     },
   },
