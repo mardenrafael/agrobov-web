@@ -1,14 +1,26 @@
-interface SexoProps {
-  label: string;
-  value: string;
-}
+import { clsx } from "clsx";
+import { useState } from "react";
+import ButtonSexo from "../ButtonSexo";
 
-const Sexo: React.FC<SexoProps> = ({ label, value }) => {
+const Sexo: React.FC = () => {
+  const [selected, setSelected] = useState("");
   return (
     <>
-      <div className="text-center bg-primary">
-        <h3 className=" text-5xl font-bold text-slate-900">{value}</h3>
-        <span className="text-xl font-light text-slate-800">{label}</span>
+      <div className="flex flex-row gap-10">
+        <ButtonSexo
+          sexo="M"
+          name="sexo"
+          id="sexom"
+          onClick={() => setSelected("M")}
+          check={selected == "M"}
+        />
+        <ButtonSexo
+          sexo="F"
+          name="sexo"
+          id="sexof"
+          onClick={() => setSelected("F")}
+          check={selected == "F"}
+        />
       </div>
     </>
   );
