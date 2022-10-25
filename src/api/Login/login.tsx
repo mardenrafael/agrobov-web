@@ -1,18 +1,21 @@
-import { redirect } from "next/dist/server/api-utils";
-import react, { PropsWithChildren, useState } from "react";
+import react, { useState } from "react";
 import User from "../User/GetUser";
-
+import BASE_URL from "../utils/BaseUrl";
 export default function LoginForm() {
-       const [email, setEmail] = useState("")
-       const [password, setPassword] = useState("")
+       
+       const [email, setEmail] = useState("");
+       const [password, setPassword] = useState("");
+       const [isValidade, setValidate] = useState(false);
+       const [TOKEN, setToken] = useState("")
 
        const data = {
         email: email,
         password: password
        }
+
     
     async function getAuthorizationToken(data: FormData) {
-        const TOKEN = await fetch("http://localhost:4000/login", {
+        const TOKEN = await fetch(`${BASE_URL}/login`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -45,14 +48,19 @@ export default function LoginForm() {
     }
 
     function handleSubmit() {
-        const TOKEN = getAuthorizationToken(data);
-        
+       getAuthorizationToken(data).
+       then((token) => {
+        setToken(token)
+        setValidate(true);
+       });
+    }
+
+    if(isValidade) {
         return(
             <>
                 <User token={TOKEN}></User>
             </>
         )
-        
     }
 
         return(
