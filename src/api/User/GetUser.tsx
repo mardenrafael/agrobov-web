@@ -9,7 +9,7 @@ export default function User(props: PropsWithChildren) {
 
 
     useEffect(() => {
-        getUser("zoiofatalmode@gmail.com", props.token).
+        getUser(props.email, props.token).
         then((user) => {
         console.log(user);
         setData(user.result);

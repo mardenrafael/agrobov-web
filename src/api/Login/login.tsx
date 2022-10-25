@@ -58,7 +58,7 @@ export default function LoginForm() {
     if(isValidade) {
         return(
             <>
-                <User token={TOKEN}></User>
+                <User email={email} token={TOKEN}></User>
             </>
         )
     }
