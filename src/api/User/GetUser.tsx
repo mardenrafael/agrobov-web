@@ -1,16 +1,6 @@
-import axios  from "axios";
 import React, { PropsWithChildren, useEffect, useState } from "react";
-import { Ox } from "../Types/Ox";
-import BASE_URL from "../utils/BaseUrl";
-import TOKEN from "../utils/Token";
-
-
-type TUserResponse = {
-    name: string;
-    brand: string;
-    email: string;
-    Ox: Ox[]
-}
+import { TUserResponse } from "../Types/UserResponse";
+import getUser from "../services/GetUser"
 
 export default function User(props: PropsWithChildren) {
     
@@ -19,21 +9,13 @@ export default function User(props: PropsWithChildren) {
 
 
     useEffect(() => {
-        fetch(BASE_URL, {
-            headers: {
-                Authorization: TOKEN,
-            }
-        })
-        .then((res) => {            
-            return res.json()
-        })
-        .then((data) => {
-            console.log(data);
-            
+        getUser("zoiofatalmode@gmail.com", props.token).
+        then((user) => {
+        console.log(user);
+        setData(user.result);
+        setLoading(false)
+        });
 
-            setData(data.result)
-            setLoading(false)
-        })
     }, [])
 
     if (isLoading) return <p> Loading...</p>
