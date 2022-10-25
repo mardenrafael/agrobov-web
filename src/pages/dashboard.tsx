@@ -1,7 +1,5 @@
+import User from "../api/User/User";
 import TOKEN from "../api/utils/Token";
-import Card from "../components/Card";
-import grupos from "../mocks/dashboard";
-import User from "../api/User/GetUser";
 
 const Dashboard = () => {
   return (

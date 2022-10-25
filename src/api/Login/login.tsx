@@ -1,5 +1,5 @@
-import react, { useState } from "react";
-import User from "../User/GetUser";
+import { useState } from "react";
+import User from "../User/User";
 import BASE_URL from "../utils/BaseUrl";
 export default function LoginForm() {
        
