@@ -1,3 +1,4 @@
+import { List } from "phosphor-react";
 import IconBoy from "../IconBoy";
 
 interface Props {
@@ -6,10 +7,10 @@ interface Props {
 
 const Header: React.FC<Props> = ({ titulo }) => {
   return (
-    <footer className="flex items-center justify-end h-10 bg-emerald-900 pr-4 ">
-      {/* <h1 className="text-2xl text-emerald-100 font-bold ">{titulo}</h1> */}
-
+    <footer className="flex items-center justify-between p-4 h-10 bg-primary">
       <IconBoy />
+
+      {/* <List /> */}
     </footer>
   );
 };
