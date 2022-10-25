@@ -1,9 +1,13 @@
+import TOKEN from "../api/utils/Token";
 import Card from "../components/Card";
 import grupos from "../mocks/dashboard";
+import User from "../api/User/GetUser";
+
 const Dashboard = () => {
   return (
     <>
-      <div className="flex flex-col p-4 gap-8">
+  <User token={TOKEN}/>
+      {/* <div className="flex flex-col p-4 gap-8">
         {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
           <Card
             key={index}
@@ -12,7 +16,7 @@ const Dashboard = () => {
             femeasQtd={femeasQtd}
           />
         ))}
-      </div>
+      </div> */}
     </>
   );
 };
