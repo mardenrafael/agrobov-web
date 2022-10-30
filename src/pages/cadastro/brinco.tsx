@@ -1,22 +1,38 @@
-import Brinco from "../../components/Brinco";
-import Header from "../../components/Header";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { MouseEventHandler, useRef, useState } from "react";
+import BrincoInput from "../../components/BrincoInput";
+import Button from "../../components/Button";
+import ButtonVoltar from "../../components/ButtonVoltar";
+import DesTela from "../../components/DesTela";
+import Screen from "../../components/Screen";
+import { useCadastroBovino } from "../../context/cadastro-bovino";
 
 const CadastroBrinco = () => {
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>();
+
+  const { setDataByName } = useCadastroBovino();
+
+  function handleSubmit() {
+    setDataByName("numBrinco", inputRef.current?.value);
+    router.push("/cadastro/sexo");
+  }
+
   return (
-    <>
-      <div className="flex flex-col w-screen h-screen">
-        <Header titulo="Cadastro Brinco" />
-        <h2 className="font-bold px-4 text-xl lg:text-2xl mt-4">
-          Nº do Brinco
-        </h2>
-        <h4 className="text-md px-4 lg:text-xl">
-          Digite o número do brinco do animal
-        </h4>
-        <div className="flex flex-col w-full items-center">
-          <Brinco />
-        </div>
+    <Screen>
+      <DesTela
+        nome="Nº do Brinco"
+        descricao="Digite o número do brinco do animal"
+      />
+      <div className="flex flex-1 items-center justify-center">
+        <BrincoInput ref={inputRef as any} autoFocus required />
       </div>
-    </>
+      <div className="flex gap-4 p-4">
+        <ButtonVoltar />
+        <Button onClick={handleSubmit}>Prôximo</Button>
+      </div>
+    </Screen>
   );
 };
 

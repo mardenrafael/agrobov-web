@@ -1,9 +1,19 @@
 import { clsx } from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GeneroType } from "../../context/cadastro-bovino";
 import ButtonSexo from "../ButtonSexo";
 
-const Sexo: React.FC = () => {
-  const [selected, setSelected] = useState("");
+interface SexoInputProps {
+  onChange?: (selected?: GeneroType) => void;
+}
+
+const SexoInput: React.FC<SexoInputProps> = ({ onChange }) => {
+  const [selected, setSelected] = useState<GeneroType>();
+
+  useEffect(() => {
+    if (onChange) onChange(selected);
+  }, [selected, onChange]);
+
   return (
     <>
       <div className="flex flex-row gap-10">
@@ -26,4 +36,4 @@ const Sexo: React.FC = () => {
   );
 };
 
-export default Sexo;
+export default SexoInput;
