@@ -1,12 +1,15 @@
 import { Divide } from "phosphor-react";
 import React, { InputHTMLAttributes } from "react";
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   icon: React.ReactNode;
   label?: string;
 }
 
-const Input: React.FC<Props> = ({ icon, name, label, ...rest }) => {
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, Props> = (
+  { icon, name, label, ...rest },
+  ref
+) => {
   return (
     <div>
       {label && (
@@ -20,8 +23,9 @@ const Input: React.FC<Props> = ({ icon, name, label, ...rest }) => {
       <div className="flex items-center gap-3 h-12 py-4 px-3 rounded w-full border-2 border-primary  focus-within:ring-2 ring-yellow-600">
         {icon}
         <input
+          ref={ref}
           id={name}
-          className="flex flex-1 font-semibold text-md text-hover-primary bg-transparent  outline-none  placeholder:text-primary placeholder:font-semibold "
+          className="flex flex-1 font-semibold text-md text-primary bg-transparent  outline-none  placeholder:text-light-primary placeholder:font-semibold "
           {...rest}
         />
       </div>
@@ -29,4 +33,4 @@ const Input: React.FC<Props> = ({ icon, name, label, ...rest }) => {
   );
 };
 
-export default Input;
+export default React.forwardRef(Input);

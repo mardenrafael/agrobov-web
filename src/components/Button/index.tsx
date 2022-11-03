@@ -14,9 +14,10 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={clsx(
-        "w-full py-2 px-4  rounded text-white text-lg",
+        "w-full py-2 px-4  rounded text-lg",
         {
-          "bg-primary hover:bg-hover-primary": variant === "default",
+          "bg-primary text-white  hover:bg-hover-primary":
+            variant === "default",
           "border-2 border-primary text-primary font-bold hover:border-hover-primary hover:text-hover-primary":
             variant === "outline",
         },

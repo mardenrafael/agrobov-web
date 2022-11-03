@@ -8,7 +8,9 @@ const Dashboard = () => {
     <Screen>
       <div className="flex flex-col p-4 gap-8">
         <Link href="/cadastro/brinco">
-          <Button>Cadastre seu bovino</Button>
+          <a>
+            <Button>Cadastre seu bovino</Button>
+          </a>
         </Link>
         {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
           <Card
