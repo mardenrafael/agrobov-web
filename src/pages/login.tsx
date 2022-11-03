@@ -1,8 +1,6 @@
 import Link from "next/link";
-import router from "next/router";
-import { Envelope, Lock, Password } from "phosphor-react";
+import { Envelope, Lock } from "phosphor-react";
 import React, { FormEvent, useRef } from "react";
-import { toast } from "react-toastify";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
 import Input from "../components/Input";

@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import Screen from "../components/Screen";
 import grupos from "../mocks/dashboard";
+
 const Dashboard = () => {
   return (
     <Screen>
