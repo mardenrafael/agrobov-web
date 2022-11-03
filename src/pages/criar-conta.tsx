@@ -21,6 +21,12 @@ const CriarConta: React.FC = () => {
         <form className="flex flex-col" action="">
           <div className="flex flex-col gap-3">
             <Input
+              name="nome"
+              label="Nome"
+              placeholder="Digite seu nome"
+              icon={<Envelope weight="bold" className="text-primary h-6 w-6" />}
+            />
+            <Input
               name="email"
               label="Email"
               placeholder="Digite seu email"
