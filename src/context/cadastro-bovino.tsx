@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 export type GeneroType = "M" | "F";
 
@@ -9,7 +10,7 @@ interface CadastroBovinoFormulario {
 }
 interface CadastroBovinoData {
   data: CadastroBovinoFormulario;
-  setDataByName(name: keyof CadastroBovinoFormulario, value: any): void;
+  setDataByName(name: keyof CadastroBovinoFormulario, value: any): boolean;
   submit: () => Promise<{ message: string }>;
 }
 
@@ -25,7 +26,13 @@ export const CadastroBovinoProvider: React.FC<{
   );
 
   function setDataByName(name: keyof CadastroBovinoFormulario, value: any) {
+    if (!value) {
+      toast("Preencha o campo para prosseguir.", { type: "error" });
+      return false;
+    }
     setData((data) => ({ ...data, [name]: value }));
+
+    return true;
   }
 
   async function submit() {

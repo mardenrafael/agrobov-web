@@ -16,8 +16,8 @@ const CadastroSexo = () => {
   const { setDataByName } = useCadastroBovino();
 
   function handleSubmit() {
-    setDataByName("sexo", value);
-    router.push("/cadastro/nascimento");
+    const isOk = setDataByName("sexo", value);
+    if (isOk) router.push("/cadastro/nascimento");
   }
 
   return (

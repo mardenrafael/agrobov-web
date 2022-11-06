@@ -18,8 +18,13 @@ const CriarConta: React.FC = () => {
     const nomeRefval = nomeRef.current?.value;
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
+<<<<<<< HEAD
     await cadastra(nomeRefval + "", emailRefval + "", senhaRefval + "");
     router.push("/dashboard");
+=======
+    const isOk = await cadastra(nomeRefval, emailRefval, senhaRefval);
+    if (isOk) router.push("/dashboard");
+>>>>>>> 95715d3ab6ae8bd540655c0ea7258c64963ce554
   }
 
   return (
