@@ -16,6 +16,7 @@ module.exports = {
         tercearia: "#EFFFFF",
         yellou: "#EBDF00",
         "hover-primary": "#043726",
+        "light-primary": "#27685292",
       },
     },
   },

@@ -1,11 +1,18 @@
-import User from "../api/User/User";
-import TOKEN from "../api/utils/Token";
+import Link from "next/link";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import Screen from "../components/Screen";
+import grupos from "../mocks/dashboard";
 
 const Dashboard = () => {
   return (
-    <>
-  <User token={TOKEN}/>
-      {/* <div className="flex flex-col p-4 gap-8">
+    <Screen>
+      <div className="flex flex-col p-4 gap-8">
+        <Link href="/cadastro/brinco">
+          <a>
+            <Button>Cadastre seu bovino</Button>
+          </a>
+        </Link>
         {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
           <Card
             key={index}
@@ -14,8 +21,8 @@ const Dashboard = () => {
             femeasQtd={femeasQtd}
           />
         ))}
-      </div> */}
-    </>
+      </div>
+    </Screen>
   );
 };
 

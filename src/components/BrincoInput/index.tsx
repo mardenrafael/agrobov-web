@@ -1,14 +1,20 @@
 import * as React from "react";
 import { SVGProps } from "react";
 
-const Brinco = (props: SVGProps<SVGSVGElement>) => (
+interface BrincoInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const BrincoInput: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  BrincoInputProps
+> = (props, ref) => (
   <div className="relative " style={{ width: 292 }}>
     <svg
       width={292}
       height={282}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
+      // {...props}
     >
       <path
         d="M106.174 36.745c.16-1.722.43-3.412.801-5.063C111.074 13.662 127.506.5 146 .5c18.948 0 34.819 13.175 38.952 30.864.021.09.044.18.064.271l.009.047c.371 1.651.641 3.341.801 5.063 6.904 38.304 31.49 63.937 95.213 83.548 6.438 1.981 10.961 7.867 10.961 14.602V266.5c0 8.284-6.716 15-15 15H15c-8.284 0-15-6.716-15-15V134.895c0-6.735 4.523-12.621 10.96-14.602 63.724-19.611 88.31-45.244 95.214-83.548Z"
@@ -23,10 +29,12 @@ const Brinco = (props: SVGProps<SVGSVGElement>) => (
       /> */}
     </svg>
     <input
+      ref={ref}
       maxLength={4}
       className="absolute uppercase text-stone-900 focus:outline-none bottom-10 left-0 right-0 bg-transparent font-bold text-7xl tracking-wider text-center"
+      {...props}
     />
   </div>
 );
 
-export default Brinco;
+export default React.forwardRef(BrincoInput);

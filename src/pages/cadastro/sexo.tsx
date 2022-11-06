@@ -1,22 +1,39 @@
-import Brinco from "../../components/Brinco";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import BrincoInput from "../../components/BrincoInput";
+import Button from "../../components/Button";
+import ButtonVoltar from "../../components/ButtonVoltar";
 import DesTela from "../../components/DesTela";
 import Header from "../../components/Header";
-import Sexo from "../../components/Sexo";
+import Screen from "../../components/Screen";
+import SexoInput from "../../components/SexoInput";
+import { GeneroType, useCadastroBovino } from "../../context/cadastro-bovino";
 
 const CadastroSexo = () => {
+  const router = useRouter();
+  const [value, setValue] = useState<GeneroType>();
+  const { setDataByName } = useCadastroBovino();
+
+  function handleSubmit() {
+    setDataByName("sexo", value);
+    router.push("/cadastro/nascimento");
+  }
+
   return (
-    <>
-      <div className="flex flex-col w-screen h-screen">
-        <Header titulo="Cadastro Brinco" />
-        <DesTela
-          nome="Sexo"
-          descricao="Clique no botão referente ao sexo do animal"
-        />
-        <div className="flex flex-col w-full h-full items-center justify-center">
-          <Sexo />
-        </div>
+    <Screen>
+      <DesTela
+        nome="Sexo"
+        descricao="Clique no botão referente ao sexo do animal"
+      />
+      <div className="flex flex-col flex-1 items-center justify-center">
+        <SexoInput onChange={(sex) => setValue(sex)} />
       </div>
-    </>
+      <div className="flex gap-4 p-4">
+        <ButtonVoltar />
+        <Button onClick={handleSubmit}>Prôximo</Button>
+      </div>
+    </Screen>
   );
 };
 
