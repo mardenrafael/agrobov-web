@@ -3,6 +3,6 @@ import Login from "../api/services/login";
 
 const Home: NextPage = () => {
   return <> </>;
-};
+  };
 
 export default Home;
