@@ -17,6 +17,7 @@ const Login: React.FC = () => {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
+
     const senhaRefval = senhaRef.current?.value;
     const isOk = await login(emailRefval, senhaRefval);
 

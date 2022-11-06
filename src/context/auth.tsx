@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import CreateUser from "../api/services/CreateUser";
 import { toast } from "react-toastify";
 import getUser from "../api/services/GetUser";
 import GetLogin from "../api/services/login";
@@ -34,8 +35,7 @@ export const AuthProvider = ({ children }: any) => {
 
     return true;
   }
-
-  async function cadastra(nome?: String, email?: String, senha?: String) {
+  async function cadastra(nome?: string, email?: string, senha?: string) {
     if (!nome) {
       toast("Nome é um campo obrigatório", { type: "error" });
       return false;
@@ -48,6 +48,13 @@ export const AuthProvider = ({ children }: any) => {
       toast("Senha é um campo obrigatório", { type: "error" });
       return false;
     }
+    const user = {
+      name: nome,
+      email: email,
+      password: senha,
+    };
+    await CreateUser(user);
+    await login(email, senha);
 
     return true;
   }
