@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    await login(emailRefval + "", senhaRefval + "");
+    await login(emailRefval, senhaRefval);
   }
 
   return (

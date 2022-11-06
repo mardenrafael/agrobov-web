@@ -1,4 +1,4 @@
-import { Envelope, Lock } from "phosphor-react";
+import { Envelope, Lock, Person, User } from "phosphor-react";
 import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
@@ -16,7 +16,7 @@ const CriarConta: React.FC = () => {
     const nomeRefval = nomeRef.current?.value;
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    await cadastra(nomeRefval + "", emailRefval + "", senhaRefval + "");
+    await cadastra(nomeRefval, emailRefval, senhaRefval);
   }
 
   return (
@@ -33,10 +33,11 @@ const CriarConta: React.FC = () => {
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
             <Input
+              ref={nomeRef as any}
               name="nome"
               label="Nome"
               placeholder="Digite seu nome"
-              icon={<Envelope weight="bold" className="text-primary h-6 w-6" />}
+              icon={<User weight="bold" className="text-primary h-6 w-6" />}
             />
             <Input
               ref={emailRef as any}
