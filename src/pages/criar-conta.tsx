@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { Envelope, Lock } from "phosphor-react";
 import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
@@ -10,6 +11,7 @@ const CriarConta: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
   const { cadastra } = useAuth();
+  const router = useRouter();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -17,6 +19,7 @@ const CriarConta: React.FC = () => {
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
     await cadastra(nomeRefval + "", emailRefval + "", senhaRefval + "");
+    router.push("/dashboard");
   }
 
   return (
@@ -33,6 +36,7 @@ const CriarConta: React.FC = () => {
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
             <Input
+              ref={nomeRef as any}
               name="nome"
               label="Nome"
               placeholder="Digite seu nome"

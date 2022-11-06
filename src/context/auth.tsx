@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import CreateUser from "../api/services/CreateUser";
 import getUser from "../api/services/GetUser";
 import GetLogin from "../api/services/login";
 import { TUserResponse } from "../api/Types/UserResponse";
@@ -22,7 +23,15 @@ export const AuthProvider = ({ children }: any) => {
     const userSigned = await getUser(email, tokenLogin);
     setUser(userSigned);
   }
-  async function cadastra(nome: String, email: String, senha: String) {}
+  async function cadastra(nome: string, email: string, senha: string) {
+    const user = {
+      name: nome,
+      email: email,
+      password: senha,
+    }
+    await CreateUser(user);
+    await login(email, senha);
+  }
 
   return (
     <AuthContext.Provider value={{ user, token, login, cadastra }}>

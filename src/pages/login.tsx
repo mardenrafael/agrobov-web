@@ -1,22 +1,24 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Envelope, Lock } from "phosphor-react";
 import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
 import Input from "../components/Input";
-import GetLogin from "../api/services/login";
-import { AuthProvider, useAuth } from "../context/auth";
+import { useAuth } from "../context/auth";
 
 const Login: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
   const { login } = useAuth();
+  const router = useRouter();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
     await login(emailRefval + "", senhaRefval + "");
+    router.push("./dashboard");
   }
 
   return (
