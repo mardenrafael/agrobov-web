@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { useRouter } from "next/router";
 import { Envelope, Lock } from "phosphor-react";
+=======
+import { Envelope, Lock, Person, User } from "phosphor-react";
+>>>>>>> dd9c43d5d810d59de8f7f2223d2f9d42298b8d73
 import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
@@ -18,8 +22,12 @@ const CriarConta: React.FC = () => {
     const nomeRefval = nomeRef.current?.value;
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
+<<<<<<< HEAD
     await cadastra(nomeRefval + "", emailRefval + "", senhaRefval + "");
     router.push("/dashboard");
+=======
+    await cadastra(nomeRefval, emailRefval, senhaRefval);
+>>>>>>> dd9c43d5d810d59de8f7f2223d2f9d42298b8d73
   }
 
   return (
@@ -40,7 +48,7 @@ const CriarConta: React.FC = () => {
               name="nome"
               label="Nome"
               placeholder="Digite seu nome"
-              icon={<Envelope weight="bold" className="text-primary h-6 w-6" />}
+              icon={<User weight="bold" className="text-primary h-6 w-6" />}
             />
             <Input
               ref={emailRef as any}

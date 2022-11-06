@@ -17,8 +17,12 @@ const Login: React.FC = () => {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
+<<<<<<< HEAD
     await login(emailRefval + "", senhaRefval + "");
     router.push("./dashboard");
+=======
+    await login(emailRefval, senhaRefval);
+>>>>>>> dd9c43d5d810d59de8f7f2223d2f9d42298b8d73
   }
 
   return (
