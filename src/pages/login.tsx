@@ -7,7 +7,6 @@ import Input from "../components/Input";
 import GetLogin from "../api/services/login";
 import { AuthProvider, useAuth } from "../context/auth";
 
-
 const Login: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
@@ -17,7 +16,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    await login(emailRefval, senhaRefval);
+    await login(emailRefval + "", senhaRefval + "");
   }
 
   return (

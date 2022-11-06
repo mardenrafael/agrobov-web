@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import getUser from "../api/services/GetUser";
 import GetLogin from "../api/services/login";
 import { TUserResponse } from "../api/Types/UserResponse";
+
 interface AuthContextData {
   user?: TUserResponse;
   token?: string;
