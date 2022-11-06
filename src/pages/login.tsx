@@ -5,9 +5,11 @@ import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
 import Input from "../components/Input";
 import GetLogin from "../api/services/login";
-import { AuthProvider, useAuth } from "../context/auth";
+import { useAuth } from "../context/auth";
+import { useRouter } from "next/router";
 
 const Login: React.FC = () => {
+  const router = useRouter();
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
   const { login } = useAuth();
@@ -16,7 +18,11 @@ const Login: React.FC = () => {
     e.preventDefault();
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    await login(emailRefval, senhaRefval);
+    const isOk = await login(emailRefval, senhaRefval);
+
+    if (isOk) {
+      router.push("/dashboard");
+    }
   }
 
   return (

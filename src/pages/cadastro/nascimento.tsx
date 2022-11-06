@@ -17,8 +17,11 @@ const CadastroNascimento = () => {
     const value = nascimentoRef.current?.value;
 
     const dataNascimento = parse(value!, "yyyy-MM-dd", new Date());
+
     // coloca no contexto
-    setDataByName("dataNascimento", dataNascimento);
+    const isOk = setDataByName("dataNascimento", dataNascimento);
+    if (!isOk) return;
+
     // contexto coloca no banco
     try {
       const res = await submit();

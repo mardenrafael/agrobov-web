@@ -15,8 +15,8 @@ const CadastroBrinco = () => {
   const { setDataByName } = useCadastroBovino();
 
   function handleSubmit() {
-    setDataByName("numBrinco", inputRef.current?.value);
-    router.push("/cadastro/sexo");
+    const isOk = setDataByName("numBrinco", inputRef.current?.value);
+    if (isOk) router.push("/cadastro/sexo");
   }
 
   return (

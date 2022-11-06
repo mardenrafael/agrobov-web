@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { Envelope, Lock, Person, User } from "phosphor-react";
 import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
@@ -6,6 +7,7 @@ import Input from "../components/Input";
 import { useAuth } from "../context/auth";
 
 const CriarConta: React.FC = () => {
+  const router = useRouter();
   const nomeRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
@@ -16,7 +18,11 @@ const CriarConta: React.FC = () => {
     const nomeRefval = nomeRef.current?.value;
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    await cadastra(nomeRefval, emailRefval, senhaRefval);
+    const isOk = await cadastra(nomeRefval, emailRefval, senhaRefval);
+
+    if (isOk) {
+      router.push("/dashboard");
+    }
   }
 
   return (
