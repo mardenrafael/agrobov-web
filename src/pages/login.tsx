@@ -4,15 +4,20 @@ import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
 import Input from "../components/Input";
+import GetLogin from "../api/services/login";
+import { AuthProvider, useAuth } from "../context/auth";
+
 
 const Login: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
+  const { login } = useAuth();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const senhaRefval = emailRef.current?.value;
-    const emailRefval = senhaRef.current?.value;
+    const emailRefval = emailRef.current?.value;
+    const senhaRefval = senhaRef.current?.value;
+    await login(emailRefval, senhaRefval);
   }
 
   return (
@@ -38,6 +43,7 @@ const Login: React.FC = () => {
             />
             <Input
               ref={senhaRef as any}
+              type="password"
               name="senha"
               label="Senha"
               placeholder="Digite sua senha"
@@ -50,7 +56,7 @@ const Login: React.FC = () => {
               Não tem uma conta? cadastre-se
             </a>
           </Link>
-          <Button className="text-md">Entrar na Plataforma</Button>
+          <Button className="text-md">Entrar</Button>
         </form>
       </div>
     </div>

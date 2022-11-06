@@ -33,7 +33,7 @@ export const CadastroBovinoProvider: React.FC<{
 
     console.log("data", data);
 
-    return { message: "Opecao realizada com sucesso!" };
+    return { message: "Operação realizada com sucesso!" };
   }
 
   return (
