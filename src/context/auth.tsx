@@ -8,8 +8,8 @@ import { TUserResponse } from "../api/Types/UserResponse";
 interface AuthContextData {
   user?: TUserResponse;
   token?: string;
-  login(email?: string, senha?: string): Promise<void>;
-  cadastra(nome?: string, email?: string, senha?: string): Promise<void>;
+  login(email?: string, senha?: string): Promise<boolean>;
+  cadastrar(nome?: string, email?: string, senha?: string): Promise<true | void>;
 }
 
 const AuthContext = React.createContext<AuthContextData>({} as AuthContextData);
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: any) => {
     return true;
   }
 
-  async function cadastra(nome?: string, email?: string, senha?: string) {
+  async function cadastrar(nome?: string, email?: string, senha?: string) {
     if (!nome) {
       toast("Nome é um campo obrigatório", { type: "error" });
       return;
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }: any) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, login, cadastra }}>
+    <AuthContext.Provider value={{ user, token, login, cadastrar }}>
       {children}
     </AuthContext.Provider>
   );

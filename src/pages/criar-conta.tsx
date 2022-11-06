@@ -10,7 +10,7 @@ const CriarConta: React.FC = () => {
   const nomeRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const senhaRef = useRef<HTMLInputElement>();
-  const { cadastra } = useAuth();
+  const { cadastrar } = useAuth();
   const router = useRouter();
 
   async function handleSubmit(e: FormEvent) {
@@ -18,7 +18,7 @@ const CriarConta: React.FC = () => {
     const nomeRefval = nomeRef.current?.value;
     const emailRefval = emailRef.current?.value;
     const senhaRefval = senhaRef.current?.value;
-    const isOk = await cadastra(nomeRefval, emailRefval, senhaRefval);
+    const isOk = await cadastrar(nomeRefval, emailRefval, senhaRefval);
     if (isOk) router.push("/dashboard");
   }
 
