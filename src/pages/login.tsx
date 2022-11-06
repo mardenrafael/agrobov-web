@@ -4,7 +4,6 @@ import React, { FormEvent, useRef } from "react";
 import Button from "../components/Button";
 import IconBoy from "../components/IconBoy";
 import Input from "../components/Input";
-import GetLogin from "../api/services/login";
 import { useAuth } from "../context/auth";
 import { useRouter } from "next/router";
 
