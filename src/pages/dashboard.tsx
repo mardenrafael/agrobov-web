@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import Screen from "../components/Screen";
 import grupos from "../mocks/dashboard";
+import User from "../api/User/User";
 
 const Dashboard = () => {
   return (
@@ -13,7 +14,8 @@ const Dashboard = () => {
             <Button>Cadastre seu bovino</Button>
           </a>
         </Link>
-        {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
+        <User />
+        {/* {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
           <Card
             key={index}
             titulo={titulo}
@@ -21,7 +23,8 @@ const Dashboard = () => {
             femeasQtd={femeasQtd}
           />
         ))}
-      </div>
+        */}
+      </div> 
     </Screen>
   );
 };

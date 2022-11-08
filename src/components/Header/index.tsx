@@ -8,7 +8,6 @@ interface Props {
 
 const Header: React.FC<Props> = ({ titulo }) => {
   const { user } =  useAuth();
-  console.log(user);
 
   return (
     <header className="flex items-center p-4 h-10 bg-primary">

@@ -20,7 +20,7 @@ const ButtonSexo: React.FC<ButtonSexoProps> = ({ sexo, check, ...rest }) => {
       >
         <h3 className="text-6xl font-bold text-tercearia ">{sexo}</h3>
         <span className="text-xl font-light text-tercearia">
-          {sexo === "F" ? "Femêa" : "Macho"}
+          {sexo === "F" ? "Fêmea" : "Macho"}
         </span>
       </button>
     </>

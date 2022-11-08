@@ -4,7 +4,7 @@ import getUser from "../services/GetUser";
 import Card from "../../components/Card/index"
 import Header from "../../components/Header";
 import { Ox } from "../Types/Ox";
-import { notEqual } from "assert";
+import { useAuth } from "../../context/auth";
 
 export default function User(props: PropsWithChildren) {
     
@@ -19,16 +19,16 @@ export default function User(props: PropsWithChildren) {
     const nineMonths: Ox[] = [];
     const oneYear: Ox[] = [];
     const moreOneYear: Ox[] = []
-    
+    const { user, token } = useAuth();
     useEffect(() => {
-        getUser(props.email, props.token).
+        getUser(user.email, token).
         then((user) => {
-            setData(user.result);
-            sortOx(user.result.Ox)
-            const maleArr = user.result.Ox.filter((Ox) => getOxByGenre("Male", Ox));
+            setData(user);
+            // sortOx(user?.Ox)
+            const maleArr = user?.Ox.filter((Ox) => getOxByGenre("Male", Ox));
             setMaleOx(maleArr);
             
-            const femaleArr = user.result.Ox.filter((Ox) => getOxByGenre("Female", Ox));
+            const femaleArr = user?.Ox.filter((Ox) => getOxByGenre("Female", Ox));
             setFemaleOx(femaleArr)
             
             setLoading(false)
@@ -107,8 +107,6 @@ export default function User(props: PropsWithChildren) {
 
     return(
         <div>
-
-        <Header />
         <Card titulo="Total" machosQtd={maleOx.length} femeasQtd={femaleOx.length} />
         <Card titulo="1 mês ou menos"/>
             {/* <p>Nome: {data?.name}</p>

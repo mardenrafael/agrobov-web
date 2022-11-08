@@ -1,5 +1,3 @@
-import { useState } from "react";
-import User from "../User/User";
 import BASE_URL from "../utils/BaseUrl";
 
 export default async function GetLogin(email: string | undefined, password: string | undefined) {
@@ -20,6 +18,6 @@ export default async function GetLogin(email: string | undefined, password: stri
         
     const TOKEN_WITH_BEARER = `Bearer ${TOKEN.token}`
     console.log(TOKEN_WITH_BEARER);
-       
+    
     return TOKEN_WITH_BEARER;
 }

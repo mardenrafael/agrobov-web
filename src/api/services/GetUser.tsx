@@ -6,6 +6,8 @@ export default async function getUser(email:string, token:string): Promise<TUser
         headers: {
             Authorization: token,
         }
-    }).then(res => res.json())
+    }).then(res => res.json());
+    console.log(response);
+    
     return response
 }

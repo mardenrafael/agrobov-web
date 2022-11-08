@@ -1,7 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
+import CreateOx from "../api/services/CreateOx";
+import { Ox } from "../api/Types/Ox";
+import { AuthContext } from "./auth";
 
-export type GeneroType = "M" | "F";
+export type GeneroType = "Male" | "Female";
 
 interface CadastroBovinoFormulario {
   numBrinco: number;
@@ -25,7 +28,10 @@ export const CadastroBovinoProvider: React.FC<{
     {} as CadastroBovinoFormulario
   );
 
+  const { user, token } = useContext(AuthContext);
+
   function setDataByName(name: keyof CadastroBovinoFormulario, value: any) {
+
     if (!value) {
       toast("Preencha o campo para prosseguir.", { type: "error" });
       return false;
@@ -36,10 +42,15 @@ export const CadastroBovinoProvider: React.FC<{
   }
 
   async function submit() {
-    // AQUI VAI A REQUISICAO DA API
-
-    console.log("data", data);
-
+    const newOx: Ox = {
+      earring: String(data.numBrinco),
+      born_date: data.dataNascimento,
+      genre: data.sexo
+    };
+    
+    await CreateOx(newOx, user.id, token);
+    console.log(newOx);
+    
     return { message: "Operação realizada com sucesso!" };
   }
 

@@ -30,7 +30,7 @@ const CadastroBrinco = () => {
       </div>
       <div className="flex gap-4 p-4">
         <ButtonVoltar />
-        <Button onClick={handleSubmit}>Prôximo</Button>
+        <Button onClick={handleSubmit}>Próximo</Button>
       </div>
     </Screen>
   );

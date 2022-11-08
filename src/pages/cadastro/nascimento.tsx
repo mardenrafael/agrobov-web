@@ -21,7 +21,7 @@ const CadastroNascimento = () => {
     // coloca no contexto
     const isOk = setDataByName("dataNascimento", dataNascimento);
     if (!isOk) return;
-
+    
     // contexto coloca no banco
     try {
       const res = await submit();
@@ -31,6 +31,8 @@ const CadastroNascimento = () => {
       toast(error.message, { type: "error" });
     }
   }
+
+
 
   return (
     <Screen>

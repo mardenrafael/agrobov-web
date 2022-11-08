@@ -21,15 +21,15 @@ const SexoInput: React.FC<SexoInputProps> = ({ onChange }) => {
           sexo="M"
           name="sexo"
           id="sexom"
-          onClick={() => setSelected("M")}
-          check={selected == "M"}
+          onClick={() => setSelected("Male")}
+          check={selected == "Male"}
         />
         <ButtonSexo
           sexo="F"
           name="sexo"
           id="sexof"
-          onClick={() => setSelected("F")}
-          check={selected == "F"}
+          onClick={() => setSelected("Female")}
+          check={selected == "Female"}
         />
       </div>
     </>

@@ -5,7 +5,6 @@ import BrincoInput from "../../components/BrincoInput";
 import Button from "../../components/Button";
 import ButtonVoltar from "../../components/ButtonVoltar";
 import DesTela from "../../components/DesTela";
-import Header from "../../components/Header";
 import Screen from "../../components/Screen";
 import SexoInput from "../../components/SexoInput";
 import { GeneroType, useCadastroBovino } from "../../context/cadastro-bovino";
@@ -31,7 +30,7 @@ const CadastroSexo = () => {
       </div>
       <div className="flex gap-4 p-4">
         <ButtonVoltar />
-        <Button onClick={handleSubmit}>Prôximo</Button>
+        <Button onClick={handleSubmit}>Próximo</Button>
       </div>
     </Screen>
   );
