@@ -1,13 +1,28 @@
 import Contador from "../Contador";
+import { useState, useEffect } from "react";
+import { Ox } from "../../api/Types/Ox";
+import getOxByGenre from "../../api/utils/sortOxByGenre";
 
 interface Props {
   titulo: string;
-  machosQtd: number;
-  femeasQtd: number;
+  oxList: Ox[];
 }
 
-const Card: React.FC<Props> = ({ titulo, femeasQtd, machosQtd }) => {
-  const total = femeasQtd + machosQtd;
+const Card: React.FC<Props> = ({ titulo, oxList }) => {
+  const [femaleOx, setFemaleOx] = useState<Ox[]>([]);
+  const [maleOx, setMaleOx] = useState<Ox[]>([]);
+  const maleArr = oxList.filter((Ox) => getOxByGenre("Male", Ox));
+  const femaleArr = oxList.filter((Ox) => getOxByGenre("Female", Ox));
+
+  useEffect(() => {
+
+  setMaleOx(maleArr);
+  setFemaleOx(femaleArr);
+
+  }, []);
+
+  console.log(oxList);
+  
 
   return (
     <div className="border rounded-md  overflow-hidden">
@@ -17,9 +32,9 @@ const Card: React.FC<Props> = ({ titulo, femeasQtd, machosQtd }) => {
         </h2>
       </div>
       <div className="flex justify-evenly  py-4">
-        <Contador label="Machos" value={machosQtd} />
-        <Contador label="Fêmeas" value={femeasQtd} />
-        <Contador label="Total" value={total} />
+        <Contador label="Machos" value={maleArr.length} />
+        <Contador label="Fêmeas" value={femaleArr.length} />
+        <Contador label="Total" value={oxList.length} />
       </div>
     </div>
   );

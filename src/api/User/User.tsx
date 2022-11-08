@@ -1,16 +1,14 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { differenceInMonths } from "date-fns";
 import { TUserResponse } from "../Types/UserResponse";
 import getUser from "../services/GetUser";
 import Card from "../../components/Card/index"
-import Header from "../../components/Header";
 import { Ox } from "../Types/Ox";
 import { useAuth } from "../../context/auth";
 
-export default function User(props: PropsWithChildren) {
+export default function User() {
     
     const [data, setData] = useState<TUserResponse>()
-    const [femaleOx, setFemaleOx] = useState([])
-    const [maleOx, setMaleOx] = useState([])
     const [isLoading, setLoading] = useState(true)
     
     const oneMonth: Ox[] = [];
@@ -24,16 +22,7 @@ export default function User(props: PropsWithChildren) {
         getUser(user.email, token).
         then((user) => {
             setData(user);
-            // sortOx(user?.Ox)
-            const maleArr = user?.Ox.filter((Ox) => getOxByGenre("Male", Ox));
-            setMaleOx(maleArr);
-            
-            const femaleArr = user?.Ox.filter((Ox) => getOxByGenre("Female", Ox));
-            setFemaleOx(femaleArr)
-            
-            setLoading(false)
-            
-                        
+            setLoading(false);         
         });
 
     }, [])
@@ -50,35 +39,40 @@ export default function User(props: PropsWithChildren) {
         const now = new Date();
         const born_month = new Date(born_date);
 
-        const month_diference = (now - born_month)/(1000 * 60 * 60 * 24 * 365);
+        const month_diference = differenceInMonths(now, born_month);
+        
+        console.log(month_diference);
+        
 
-        return Number(month_diference.toFixed(1))
+        return month_diference;
         
     }
 
-    function sortOx(OxList: Ox[]) {
+    async function sortOx(OxList: Ox[]) {
         OxList.map((Ox) => {
            const month_diference = getMonthDiference(Ox.born_date);
-           switch(month_diference) {
+            switch(month_diference) {
             case 0:
-            case 0.1:
+            case 1:
                 oneMonth.push(Ox);
             break
-            case 0.2:
-            case 0.3:
+            case 2:
+            case 3:
                 threeMonths.push(Ox);
             break
-            case 0.4:
-            case 0.5:
-            case 0.6:
+            case 4:
+            case 5:
+            case 6:
                 sixMonths.push(Ox);
             break
-            case 0.7:
-            case 0.8:
-            case 0.9:
+            case 7:
+            case 8:
+            case 9:
                 nineMonths.push(Ox);
             break
-            case 1:
+            case 10:
+            case 11:
+            case 12:
                 oneYear.push(Ox);
             break
             default:
@@ -88,43 +82,17 @@ export default function User(props: PropsWithChildren) {
         })
     }
 
-    function formatGenre(genre: string) {
-        
-        if(genre == "Male") {
-            return "Macho"
-        } else {
-            return "Fêmea"
-        }
-    }
-
-    function getOxByGenre(genre, Ox) {
-        return Ox.genre == genre;
-    }
-
+    sortOx(user?.Ox)
 
     return(
         <div>
-        <Card titulo="Total" machosQtd={maleOx.length} femeasQtd={femaleOx.length} />
-        <Card titulo="1 mês ou menos"/>
-            {/* <p>Nome: {data?.name}</p>
-            <p>Marca: {data?.brand}</p>
-            <p>E-mail: {data?.email}</p>
-
-            <h2>Lista de Bois</h2>
-            <ul>
-                {data?.Ox.map(Ox => {
-                    
-                    return (
-                        <li key={Ox.earring}>
-                            Brinco: {Ox.earring}
-                            <br />
-                            Genero: {formatGenre(Ox.genre)}
-                            <br />
-                            Data de Nascimento: {formatDate(Ox.born_date)}
-                        </li>
-                    )
-                })}
-            </ul> */}
+            <Card titulo="Total" oxList={user.Ox} />
+            <Card titulo="até 1 mês de idade" oxList={oneMonth} />
+            <Card titulo="entre 2 e 3 meses de idade" oxList={threeMonths} />
+            <Card titulo="entre 4 e 6 meses de idade" oxList={sixMonths} />
+            <Card titulo="entre 7 e 9 meses de idade" oxList={nineMonths} />
+            <Card titulo="entre 10 meses e 1 ano de idade" oxList={oneYear} />
+            <Card titulo="mais de 1 ano de idade" oxList={moreOneYear} />
         </div>
     )
 }
