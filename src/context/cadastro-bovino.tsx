@@ -49,7 +49,6 @@ export const CadastroBovinoProvider: React.FC<{
     };
     
     await CreateOx(newOx, user.id, token);
-    console.log(newOx);
     
     return { message: "Operação realizada com sucesso!" };
   }

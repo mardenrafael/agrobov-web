@@ -21,11 +21,7 @@ const CadastroNascimento = () => {
     // coloca no contexto
     const isOk = setDataByName("dataNascimento", dataNascimento);
     if (!isOk) return;
-
-    console.log(dataNascimento);
     
-    
-    // contexto coloca no banco
   }
 
   async function submitOx() {

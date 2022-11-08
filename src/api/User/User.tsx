@@ -52,9 +52,6 @@ export default function User(props: PropsWithChildren) {
 
         const month_diference = (now - born_month)/(1000 * 60 * 60 * 24 * 365);
 
-        console.log(Number(month_diference.toFixed(1)));
-        
-
         return Number(month_diference.toFixed(1))
         
     }

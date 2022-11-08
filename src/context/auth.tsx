@@ -42,9 +42,7 @@ export const AuthProvider = ({ children }: any) => {
     }
 
     setUser(userSigned);
-    
-    console.log(user);
-    
+  
     return true;
   }
 
@@ -62,7 +60,6 @@ export const AuthProvider = ({ children }: any) => {
       return;
     }
     const user = {
-  
       name: nome,
       email: email,
       password: senha,

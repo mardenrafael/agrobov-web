@@ -17,7 +17,5 @@ export default async function GetLogin(email: string | undefined, password: stri
         })
         
     const TOKEN_WITH_BEARER = `Bearer ${TOKEN.token}`
-    console.log(TOKEN_WITH_BEARER);
-    
     return TOKEN_WITH_BEARER;
 }
