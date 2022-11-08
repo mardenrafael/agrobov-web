@@ -21,9 +21,6 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
 
   }, []);
 
-  console.log(oxList);
-  
-
   return (
     <div className="border rounded-md  overflow-hidden">
       <div className="bg-primary p-1">

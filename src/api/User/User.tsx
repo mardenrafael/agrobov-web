@@ -8,7 +8,7 @@ import { useAuth } from "../../context/auth";
 
 export default function User() {
     
-    const [data, setData] = useState<TUserResponse>()
+    const [updatedUser, setupdatedUser] = useState<TUserResponse>({} as TUserResponse)
     const [isLoading, setLoading] = useState(true)
     
     const oneMonth: Ox[] = [];
@@ -21,7 +21,7 @@ export default function User() {
     useEffect(() => {
         getUser(user.email, token).
         then((user) => {
-            setData(user);
+            setupdatedUser(user);
             setLoading(false);         
         });
 
@@ -38,11 +38,7 @@ export default function User() {
     function getMonthDiference(born_date: Date) {
         const now = new Date();
         const born_month = new Date(born_date);
-
         const month_diference = differenceInMonths(now, born_month);
-        
-        console.log(month_diference);
-        
 
         return month_diference;
         
@@ -82,17 +78,23 @@ export default function User() {
         })
     }
 
-    sortOx(user?.Ox)
+    sortOx(updatedUser.Ox)
 
     return(
         <div>
-            <Card titulo="Total" oxList={user.Ox} />
-            <Card titulo="até 1 mês de idade" oxList={oneMonth} />
-            <Card titulo="entre 2 e 3 meses de idade" oxList={threeMonths} />
-            <Card titulo="entre 4 e 6 meses de idade" oxList={sixMonths} />
-            <Card titulo="entre 7 e 9 meses de idade" oxList={nineMonths} />
-            <Card titulo="entre 10 meses e 1 ano de idade" oxList={oneYear} />
-            <Card titulo="mais de 1 ano de idade" oxList={moreOneYear} />
+            <Card titulo="Total" oxList={updatedUser.Ox} />
+            <br />
+            <Card titulo="Até 1 mês de idade" oxList={oneMonth} />
+            <br />
+            <Card titulo="Entre 2 e 3 meses de idade" oxList={threeMonths} />
+            <br />
+            <Card titulo="Entre 4 e 6 meses de idade" oxList={sixMonths} />
+            <br />
+            <Card titulo="Entre 7 e 9 meses de idade" oxList={nineMonths} />
+            <br />
+            <Card titulo="Entre 10 meses e 1 ano de idade" oxList={oneYear} />
+            <br />
+            <Card titulo="Mais de 1 ano de idade" oxList={moreOneYear} />
         </div>
     )
 }
