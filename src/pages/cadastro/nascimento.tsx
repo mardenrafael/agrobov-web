@@ -21,8 +21,14 @@ const CadastroNascimento = () => {
     // coloca no contexto
     const isOk = setDataByName("dataNascimento", dataNascimento);
     if (!isOk) return;
+
+    console.log(dataNascimento);
+    
     
     // contexto coloca no banco
+  }
+
+  async function submitOx() {
     try {
       const res = await submit();
       toast(res.message, { type: "success" });
@@ -30,6 +36,7 @@ const CadastroNascimento = () => {
     } catch (error: any) {
       toast(error.message, { type: "error" });
     }
+
   }
 
 
@@ -42,6 +49,7 @@ const CadastroNascimento = () => {
       />
       <div className="flex flex-1 justify-center items-center mt-6 px-4">
         <input
+          onChange={handleSubmit}
           ref={nascimentoRef as any}
           type="date"
           required
@@ -51,7 +59,7 @@ const CadastroNascimento = () => {
       </div>
       <div className="flex gap-4 p-4">
         <ButtonVoltar />
-        <Button onClick={handleSubmit}>Salvar</Button>
+        <Button onClick={submitOx}>Salvar</Button>
       </div>
     </Screen>
   );

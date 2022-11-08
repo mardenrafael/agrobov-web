@@ -2,6 +2,7 @@ import { Ox } from "../Types/Ox";
 import BASE_URL from "../utils/BaseUrl";
 
 export default async function CreateOx(Ox: Ox, userId: number, token: string) {
+    console.log(Ox);
     const ox: Promise<Ox> = await fetch(`${BASE_URL}/user/${userId}/ox`, {
       method: "POST",
       body: JSON.stringify(Ox),
