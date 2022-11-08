@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Button from "../components/Button";
-import Card from "../components/Card";
 import Screen from "../components/Screen";
-import grupos from "../mocks/dashboard";
 import User from "../api/User/User";
 
 const Dashboard = () => {
@@ -15,15 +13,6 @@ const Dashboard = () => {
           </a>
         </Link>
         <User />
-        {/* {grupos.map(({ titulo, machosQtd, femeasQtd }, index) => (
-          <Card
-            key={index}
-            titulo={titulo}
-            machosQtd={machosQtd}
-            femeasQtd={femeasQtd}
-          />
-        ))}
-        */}
       </div> 
     </Screen>
   );
