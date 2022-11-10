@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { differenceInMonths } from "date-fns";
-import { TUserResponse } from "../Types/UserResponse";
-import getUser from "../services/GetUser";
-import Card from "../../components/Card/index";
-import { Ox } from "../Types/Ox";
-import { useAuth } from "../../context/auth";
+import { TUserResponse } from "../../api/Types/UserResponse";
+import getUser from "../../api/services/GetUser";
+import Card from "../Card/index";
+import { Ox } from "../../api/Types/Ox";
+import { parseCookies } from "nookies";
 
 export default function User() {
   const [updatedUser, setupdatedUser] = useState<TUserResponse>(
@@ -18,21 +18,17 @@ export default function User() {
   const nineMonths: Ox[] = [];
   const oneYear: Ox[] = [];
   const moreOneYear: Ox[] = [];
-  const { user, token } = useAuth();
+
   useEffect(() => {
-    getUser(user.email, token).then((user) => {
+    const { "agrobov.token": token } = parseCookies();
+    const { "agrobovUser.email": email } = parseCookies();
+    getUser(email, token).then((user) => {
       setupdatedUser(user);
       setLoading(false);
     });
   }, []);
 
   if (isLoading) return <p> Loading...</p>;
-
-  function formatDate(date: Date) {
-    const born_date = new Date(date);
-    const formated_date = born_date.toLocaleDateString();
-    return formated_date;
-  }
 
   function getMonthDiference(born_date: Date) {
     const now = new Date();

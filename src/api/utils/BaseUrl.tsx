@@ -1,3 +1,5 @@
-const BASE_URL = "http://localhost:3030";
+import "dotenv/config";
 
-export default BASE_URL
+const BASE_URL = "http://localhost:3030" //process.env.BASE_URL;
+
+export default BASE_URL;

@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import CreateOx from "../api/services/CreateOx";
 import { Ox } from "../api/Types/Ox";
 import { AuthContext } from "./auth";
+import { parseCookies } from "nookies";
 
 export type GeneroType = "Male" | "Female";
 
@@ -28,7 +29,8 @@ export const CadastroBovinoProvider: React.FC<{
     {} as CadastroBovinoFormulario
   );
 
-  const { user, token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { "agrobov.token": token } = parseCookies();
 
   function setDataByName(name: keyof CadastroBovinoFormulario, value: any) {
 

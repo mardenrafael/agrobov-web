@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CreateUser from "../api/services/CreateUser";
 import { toast } from "react-toastify";
 import getUser from "../api/services/GetUser";
 import GetLogin from "../api/services/Login";
 import { TUserResponse } from "../api/Types/UserResponse";
+import { setCookie, parseCookies } from "nookies";
 
 interface AuthContextData {
   user: TUserResponse;
@@ -17,6 +18,16 @@ export const AuthContext = React.createContext<AuthContextData>({} as AuthContex
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<TUserResponse>({} as TUserResponse);
   const [token, setToken] = useState<string>("");
+
+  useEffect(() => {
+      const { "agrobov.token": token } = parseCookies();
+      const { "agrobovUser.email": email } = parseCookies();
+      if(token) {
+        getUser(email, token).then((user) => {
+          setUser(user);
+        })
+      }
+  }, [])
 
   async function login(email?: string, senha?: string) {
     if (!email) {
@@ -33,8 +44,12 @@ export const AuthProvider = ({ children }: any) => {
     if (!tokenLogin) {
       return false
     }
-
     setToken(tokenLogin);
+    setCookie(undefined, "agrobovUser.email", email);
+    setCookie(undefined, "agrobov.token", tokenLogin, {
+      expire: 60 * 60 * 24,
+    });
+
     const userSigned = await getUser(email, tokenLogin);
 
     if (!userSigned) {

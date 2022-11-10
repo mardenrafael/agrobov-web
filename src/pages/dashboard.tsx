@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Button from "../components/Button";
 import Screen from "../components/Screen";
-import User from "../api/User/User";
+import User from "../components/User/User";
 
 const Dashboard = () => {
   return (
