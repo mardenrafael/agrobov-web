@@ -15,10 +15,8 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
   const femaleArr = oxList.filter((Ox) => getOxByGenre("Female", Ox));
 
   useEffect(() => {
-
-  setMaleOx(maleArr);
-  setFemaleOx(femaleArr);
-
+    setMaleOx(maleArr);
+    setFemaleOx(femaleArr);
   }, []);
 
   return (

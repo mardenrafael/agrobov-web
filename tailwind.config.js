@@ -18,7 +18,11 @@ module.exports = {
         "hover-primary": "#043726",
         "light-primary": "#27685292",
       },
+      boxShadow: {
+        '4xl': '0px 0px 20px #276852',
+      }
     },
   },
   plugins: [],
 };
+
