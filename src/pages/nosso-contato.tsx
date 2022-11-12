@@ -9,7 +9,7 @@ const NossoContato: React.FC = () => {
           <div className="flex flex-col items-center justify-center mb-5">
             <IconBoy fill="#276852" width={96} height={96} />
           </div>
-          <h1 className="font-bold text-primary text-2xl">
+          <h1 className="font-bold text-primary text-2xl text-center">
             Entre em contato com o suporte atraves do email {""}
             agrobov@gmail.com
           </h1>
