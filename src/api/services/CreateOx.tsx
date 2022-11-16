@@ -1,18 +1,10 @@
 import { Ox } from "../Types/Ox";
-import BASE_URL from "../utils/BaseUrl";
+import { api } from "./api";
 
-export default async function CreateOx(Ox: Ox, userId: number, token: string) {
-    const ox: Promise<Ox> = await fetch(`${BASE_URL}/user/${userId}/ox`, {
-      method: "POST",
-      body: JSON.stringify(Ox),
-      headers: {
-        Authorization: token,
-        "Content-Type": "application/json",
-    }
-    }).then((res) => {
-      return res.json();
-    }).catch((err) => {
-      return err
-    })
-    return ox
+export default async function createOx(ox: Ox, userId: number, token: string) {
+  const res = await api.post(`/user/${userId}/ox`, ox, {
+    headers: { Authorization: token },
+  });
+
+  return res.data as Ox;
 }

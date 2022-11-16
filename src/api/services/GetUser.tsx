@@ -1,12 +1,13 @@
-import BASE_URL from "../utils/BaseUrl";
 import { TUserResponse } from "../Types/UserResponse";
+import { api } from "./api";
 
-export default async function getUser(email:string, token:string): Promise<TUserResponse>{
-    const response = await fetch(`${BASE_URL}/user?email=${email}`, {
-        headers: {
-            Authorization: token,
-        }
-    }).then(res => res.json());
-    
-    return response
+export default async function getUser(email: string, token: string) {
+  const res = await api.get(`/user`, {
+    params: { email: email },
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return res.data as TUserResponse;
 }

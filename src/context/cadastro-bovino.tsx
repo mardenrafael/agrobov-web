@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import CreateOx from "../api/services/CreateOx";
+import createOx from "../api/services/CreateOx";
 import { Ox } from "../api/Types/Ox";
 import { AuthContext } from "./auth";
 import { parseCookies } from "nookies";
@@ -33,7 +33,6 @@ export const CadastroBovinoProvider: React.FC<{
   const { "agrobov.token": token } = parseCookies();
 
   function setDataByName(name: keyof CadastroBovinoFormulario, value: any) {
-
     if (!value) {
       toast("Preencha o campo para prosseguir.", { type: "error" });
       return false;
@@ -47,11 +46,11 @@ export const CadastroBovinoProvider: React.FC<{
     const newOx: Ox = {
       earring: String(data.numBrinco),
       born_date: data.dataNascimento,
-      genre: data.sexo
+      genre: data.sexo,
     };
-    
-    await CreateOx(newOx, user.id, token);
-    
+
+    await createOx(newOx, user.id, token);
+
     return { message: "Operação realizada com sucesso!" };
   }
 
