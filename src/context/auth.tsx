@@ -48,7 +48,6 @@ export const AuthProvider = ({ children }: any) => {
     try {
       const tokenLogin = await getLogin(email, senha);
 
-      console.log("tokenLogin", tokenLogin);
       if (!tokenLogin) {
         return false;
       }
