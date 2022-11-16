@@ -51,6 +51,7 @@ const CriarConta: React.FC = () => {
             />
             <Input
               ref={senhaRef as any}
+              type="password"
               name="senha"
               label="Senha"
               placeholder="Digite sua senha"
