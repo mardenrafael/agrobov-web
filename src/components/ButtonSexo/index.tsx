@@ -13,13 +13,13 @@ const ButtonSexo: React.FC<ButtonSexoProps> = ({ sexo, check, ...rest }) => {
         className={clsx(
           "text-center  bg-primary py-6 px-8 rounded-md border-transparent",
           {
-            "bg-hover-primary border-2 border-secundaria": check,
+            "bg-hover-primary border-2 border-secondary": check,
           }
         )}
         {...rest}
       >
-        <h3 className="text-6xl font-bold text-tercearia ">{sexo}</h3>
-        <span className="text-xl font-light text-tercearia">
+        <h3 className="text-6xl font-bold text-tertiary ">{sexo}</h3>
+        <span className="text-xl font-light text-tertiary">
           {sexo === "F" ? "Fêmea" : "Macho"}
         </span>
       </button>

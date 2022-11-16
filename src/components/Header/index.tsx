@@ -14,13 +14,13 @@ const Header: React.FC<Props> = ({ titulo }) => {
     <header className="flex w-full items-center justify-between p-1 px-6 bg-primary">
       <div className="flex  items-center gap-2">
         <IconBoy fill="#EFFFFF" />
-        <h4 className="font-light text-sm  text-tercearia">
+        <h4 className="font-light text-sm  text-tertiary">
           Seja bem-vindo(a) {user?.name}
         </h4>
       </div>
       <div className="flex  items-center ">
         <Link href="nosso-contato">
-          <a className="font-light text-sm text-tercearia underline hover:text-yellou">
+          <a className="font-light text-sm text-tertiary underline hover:text-yellow">
             Entre em contato conosco
           </a>
         </Link>

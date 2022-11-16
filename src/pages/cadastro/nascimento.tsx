@@ -49,7 +49,7 @@ const CadastroNascimento = () => {
           ref={nascimentoRef as any}
           type="date"
           required
-          className="border-2 border-secundaria rounded text-center text-5xl py-4 w-full"
+          className="border-2 border-secondary rounded text-center text-5xl py-4 w-full"
           placeholder="DD/MM/YYYY"
         />
       </div>
