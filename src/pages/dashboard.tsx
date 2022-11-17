@@ -7,11 +7,18 @@ const Dashboard = () => {
   return (
     <Screen>
       <div className="flex flex-col p-4 gap-8">
-        <div className="px-4">
+        <div className="px-4"
+          style={
+            {
+              width: "50%",
+              margin: "0 auto"
+            }
+          }
+        >
           <Link href="/cadastro/brinco">
             <a>
               <Button className="mt-2 hover:shadow-4xl hover:ring-1 hover:ring-tertiary focus:border focus:border-yellow">
-                Cadastre seu bovino
+                + Cadastre seu bovino
               </Button>
             </a>
           </Link>
