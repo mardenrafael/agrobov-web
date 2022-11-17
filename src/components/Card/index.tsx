@@ -17,7 +17,7 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
   useEffect(() => {
     setMaleOx(maleArr);
     setFemaleOx(femaleArr);
-  }, []);
+  },[maleArr, femaleArr]);
 
   return (
     <div className="border rounded-md  overflow-hidden"
