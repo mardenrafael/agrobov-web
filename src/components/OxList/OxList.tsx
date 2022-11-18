@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { Ox } from "../../api/Types/Ox";
 import DeleteOx from "../../api/services/DeleteOx";
+import getUser from "../../api/services/GetUser";
 
 interface props {
   OxList: Ox[];
@@ -10,9 +11,7 @@ export default function OxLIst({ OxList }: props) {
   const oxList = OxList;
 
   function handleDelete(ox: Ox) {
-    console.log(ox);
     const deletedOx = DeleteOx(ox);
-    
   }
 
   function formatGenre(genre: string) {
@@ -55,8 +54,7 @@ export default function OxLIst({ OxList }: props) {
                     <td>{formatGenre(ox.genre)}</td>
                     <td>{format(new Date(ox.born_date), "MM/dd/yyyy")}</td>
                     <td>
-                      {/* <button id={ox.id} Click={handleDelete(ox)}>Deletar</button> */}
-                      <Button />
+                      <button onClick={() => handleDelete(ox)}>Deletar</button>
                     </td>
                   </tr>
                 </>

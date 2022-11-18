@@ -43,7 +43,7 @@ export const CadastroBovinoProvider: React.FC<{
   }
 
   async function submit() {
-    const newOx: Ox = {
+    const newOx: Omit<Ox, "id"> = {
       earring: String(data.numBrinco),
       born_date: data.dataNascimento,
       genre: data.sexo,
