@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../Header";
 
-// import { Container } from './styles';
-
 export interface ScreenProps {
   children: React.ReactNode;
 }

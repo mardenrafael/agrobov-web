@@ -4,13 +4,16 @@ import { CadastroBovinoProvider } from "../context/cadastro-bovino";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "../context/auth";
+import { OxListProvider } from "../context/oxList";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <CadastroBovinoProvider>
+        <OxListProvider>
         <ToastContainer />
         <Component {...pageProps} />
+        </OxListProvider>
       </CadastroBovinoProvider>
     </AuthProvider>
   );
