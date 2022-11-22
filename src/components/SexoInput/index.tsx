@@ -12,7 +12,7 @@ const SexoInput: React.FC<SexoInputProps> = ({ onChange }) => {
 
   useEffect(() => {
     if (onChange) onChange(selected);
-  }, [selected, onChange]);
+  }, []);
 
   return (
     <>

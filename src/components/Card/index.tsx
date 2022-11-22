@@ -1,8 +1,9 @@
-import Contador from "../Contador";
 import { useState, useEffect } from "react";
 import { Ox } from "../../api/Types/Ox";
 import getOxByGenre from "../../utils/sortOxByGenre";
-
+import Contador from "../Contador";
+import { useRouter } from "next/router";
+import { useOxList } from "../../context/oxList";
 interface Props {
   titulo: string;
   oxList: Ox[];
@@ -13,23 +14,24 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
   const [maleOx, setMaleOx] = useState<Ox[]>([]);
   const maleArr = oxList.filter((Ox) => getOxByGenre("Male", Ox));
   const femaleArr = oxList.filter((Ox) => getOxByGenre("Female", Ox));
+  const router = useRouter();
+  const { setOxArr } = useOxList()
 
   useEffect(() => {
     setMaleOx(maleArr);
     setFemaleOx(femaleArr);
-  },[maleArr, femaleArr]);
+  }, []);
+
+  function redirectToOxList() {
+    setOxArr(oxList);
+    router.push("/lista-de-bois")
+  }
 
   return (
-    <div className="border rounded-md  overflow-hidden"
-    style={
-      {
-        width: "80%",
-        margin:"0 auto"
-      }
-      }>
+    <div className="border rounded-md overflow-hidden w-4/5 my-0 mx-auto">
       <div className="bg-primary p-1">
-        <h2 className="text-center font-light text-xl text-teal-50 ">
-          {titulo}
+        <h2 className="text-center font-light text-xl text-teal-50 cursor-pointer hover:underline">
+          <a onClick={redirectToOxList}>{titulo}</a>
         </h2>
       </div>
       <div className="flex justify-evenly  py-4">
