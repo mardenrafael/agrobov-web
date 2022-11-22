@@ -30,7 +30,7 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
   return (
     <div className="border rounded-md overflow-hidden w-4/5 my-0 mx-auto">
       <div className="bg-primary p-1">
-        <h2 className="text-center font-light text-xl text-teal-50 ">
+        <h2 className="text-center font-light text-xl text-teal-50 cursor-pointer hover:underline">
           <a onClick={redirectToOxList}>{titulo}</a>
         </h2>
       </div>
