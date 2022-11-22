@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { Ox } from "../../api/Types/Ox";
-import DeleteOx from "../../api/services/DeleteOx";
+import { Ox } from "../api/Types/Ox";
+import DeleteOx from "../api/services/DeleteOx";
 
 interface props {
   OxList: Ox[];
@@ -42,8 +42,8 @@ export default function OxLIst({ OxList }: props) {
                     <td>{ox.earring}</td>
                     <td>{formatGenre(ox.genre)}</td>
                     <td>{format(new Date(ox.born_date), "MM/dd/yyyy")}</td>
-                    <td>
-                      <button onClick={() => handleDelete(ox)}>Deletar</button>
+                    <td className="py-1">
+                      <button className="px-4 rounded text-md text-white bg-red-700 hover:bg-red-800" onClick={() => handleDelete(ox)}>Deletar</button>
                     </td>
                   </tr>
                 </>

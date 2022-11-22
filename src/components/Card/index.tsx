@@ -1,8 +1,7 @@
-import Contador from "../Contador";
 import { useState, useEffect } from "react";
 import { Ox } from "../../api/Types/Ox";
 import getOxByGenre from "../../utils/sortOxByGenre";
-import OxLIst from "../OxList/OxList";
+import OxLIst from "../../pages/lista-de-bois";
 
 interface Props {
   titulo: string;
