@@ -52,7 +52,9 @@ export const AuthProvider = ({ children }: any) => {
         return false;
       }
       setToken(tokenLogin);
-      setCookie(undefined, "agrobovUser.email", email);
+      setCookie(undefined, "agrobovUser.email", email, {
+        expire: 60 * 60 * 24,
+      });
       setCookie(undefined, "agrobov.token", tokenLogin, {
         expire: 60 * 60 * 24,
       });
@@ -66,7 +68,7 @@ export const AuthProvider = ({ children }: any) => {
       setUser(userSigned);
     } catch (error) {
       console.log("login", error);
-      toast("Erro ao realizar login!", { type: "error" });
+      toast("Email ou senha inválidos!", { type: "error" });
 
       return false;
     }

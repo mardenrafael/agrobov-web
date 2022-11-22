@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 import { Ox } from "../../api/Types/Ox";
 import DeleteOx from "../../api/services/DeleteOx";
-import getUser from "../../api/services/GetUser";
 
 interface props {
   OxList: Ox[];
@@ -26,23 +25,13 @@ export default function OxLIst({ OxList }: props) {
   return (
     <>
       <div>
-        <table
-          className="table-fixed border rounded-md  overflow-hidden"
-          style={{
-            width: "70%",
-            margin: "0 auto",
-          }}
-        >
-          <thead
-            className="bg-primary p-1"
-            style={{
-              margin: "0 auto",
-            }}
-          >
+        <table className="table-fixed border rounded-md  overflow-hidden my-0 mx-auto w-3/4">
+          <thead className="bg-primary p-1 my-0 mx-auto">
             <tr className="text-center font-light text-l text-teal-50">
               <td>Brinco</td>
               <td>Sexo</td>
               <td>Data de Nascimento</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>

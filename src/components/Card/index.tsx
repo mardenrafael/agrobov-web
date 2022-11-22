@@ -22,13 +22,7 @@ const Card: React.FC<Props> = ({ titulo, oxList }) => {
 
   return (
     <OxLIst OxList={oxList}/>
-    // <div className="border rounded-md  overflow-hidden"
-    // style={
-    //   {
-    //     width: "80%",
-    //     margin:"0 auto"
-    //   }
-    //   }>
+    // <div className="border rounded-md overflow-hidden w-4/5 my-0 mx-auto">
     //   <div className="bg-primary p-1">
     //     <h2 className="text-center font-light text-xl text-teal-50 ">
     //       {titulo}
