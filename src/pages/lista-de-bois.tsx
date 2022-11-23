@@ -27,38 +27,49 @@ export default function OxLIst() {
 
   return (
     <Screen>
-      <div className="my-0 mx-auto p-4 gap-8">
-        <table className="border rounded-md overflow-hidden table-fixed mx-auto w-3/4">
-          <thead className="bg-primary p-1 my-0 mx-auto">
-            <tr className="text-center font-light text-l text-teal-50">
-              <td>Brinco</td>
-              <td>Sexo</td>
-              <td>Data de Nascimento</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {oxList.map((ox: Ox) => {
-              return (
-                <>
-                  <tr className="text-center py-4" key={ox.id}>
-                    <td>{ox.earring}</td>
-                    <td>{formatGenre(ox.genre)}</td>
-                    <td>{format(new Date(ox.born_date), "MM/dd/yyyy")}</td>
-                    <td className="py-1">
+      <div>
+        <div className="overflow-x-auto relative shadow-md sm:rounded-lg m-4">
+          <table className="w-full text-sm text-left text-gray-500 ">
+            <thead className="text-xs text-tertiary uppercase bg-primary ">
+              <tr>
+                <th scope="col" className="py-3 px-6">
+                  Brinco
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Sexo
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Data Nascimento
+                </th>
+                <th scope="col" className="py-3 px-6"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {oxList.map((ox: Ox) => {
+                return (
+                  <tr
+                    key={ox.id}
+                    className="bg-white border-b text-primary hover:bg-gray-50"
+                  >
+                    <th className="py-4 px-6 font-medium ">{ox.earring}</th>
+                    <td className="py-4 px-6">{formatGenre(ox.genre)}</td>
+                    <td className="py-4 px-6">
+                      {format(new Date(ox.born_date), "MM/dd/yyyy")}
+                    </td>
+                    <td className="">
                       <button
-                        className="px-4 rounded text-md text-white bg-red-700 hover:bg-red-800"
+                        className="px-3 py-2 rounded text-md text-white bg-red-700 hover:bg-red-800"
                         onClick={() => handleDelete(ox)}
                       >
                         Deletar
                       </button>
                     </td>
                   </tr>
-                </>
-              );
-            })}
-          </tbody>
-        </table>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Screen>
   );
