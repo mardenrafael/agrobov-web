@@ -7,6 +7,9 @@ import { AuthProvider } from "../context/auth";
 import { OxListProvider } from "../context/oxList";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  console.log(process.env.BASE_URL);
+  
+
   return (
     <AuthProvider>
       <CadastroBovinoProvider>

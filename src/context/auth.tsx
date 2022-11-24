@@ -94,9 +94,15 @@ export const AuthProvider = ({ children }: any) => {
       email: email,
       password: senha,
     };
-    await createUser(user);
-    await login(email, senha);
-
+    
+    try {
+      await createUser(user);
+      await login(email, senha);
+    } catch (err) {
+      toast("Usuário já existente", { type: "error" });
+      return;
+    }
+    
     return true;
   }
 

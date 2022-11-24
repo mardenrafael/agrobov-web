@@ -1,4 +1,3 @@
-import BASE_URL from "../utils/BaseUrl";
 import { api } from "./api";
 
 interface IUser {
