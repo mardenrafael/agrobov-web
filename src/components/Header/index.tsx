@@ -25,6 +25,15 @@ const Header: React.FC<Props> = ({ titulo }) => {
           </a>
         </Link>
       </div>
+
+      <div className="flex  items-center ">
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSc-Lw1VedGCwGv-j5J08joLtjm4QbEkvVmJ_QUHBHj-mQj71Q/viewform?usp=sharing">
+          <a className="font-light text-sm text-tertiary underline hover:text-yellow">
+            Feedback do Usuário
+          </a>
+        </Link>
+      </div>
+
     </header>
   );
 };

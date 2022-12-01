@@ -10,8 +10,12 @@ const NossoContato: React.FC = () => {
             <IconBoy fill="#276852" width={96} height={96} />
           </div>
           <h1 className="font-bold text-primary text-2xl text-center">
-            Entre em contato com o suporte atraves do email {""}
-            agrobov@gmail.com
+            Entre em contato com o suporte através dos e-mails: {""} <br /> <br />
+            lucas@agrobov.app.br <br /> <br />
+            junior@agrobov.app.br <br /> <br />
+            sarah@agrobov.app.br <br /> <br />
+            mateus@agrobov.app.br <br /> <br />
+            marden@agrobov.app.br <br /> <br />
           </h1>
         </div>
       </div>
