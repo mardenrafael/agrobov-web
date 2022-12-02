@@ -30,7 +30,7 @@ const CriarConta: React.FC = () => {
             <IconBoy fill="#276852" width={96} height={96} />
           </div>
           <h1 className="font-bold text-primary text-2xl">
-            Crie seu cadastro e a cadastrar seus bois.
+            Crie seu cadastro para poder cadastrar seus animais.
           </h1>
         </div>
         <form className="flex flex-col" onSubmit={handleSubmit}>
