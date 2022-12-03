@@ -15,7 +15,7 @@ Projeto acadêmico, cujo objetivo é auxiliar o pecuarista a administrar seu gad
 - Prisma ORM
 - PostgreSQL
 
-o código do backend está disponível no seguinte repositório: https://github.com/mardenrafael/contaboi-backend/
+o código do backend está disponível no seguinte repositório: https://github.com/mardenrafael/agrobov-api/
 
 ## Equipe de desenvolvimento
 
